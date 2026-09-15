@@ -5,6 +5,10 @@ const app = express()
 
 const PORT = process.env.PORT || 3001
 
+
+
+
+
 app.get('/', (req, res) => {
     res.set('Content-Type', 'text/html')
     res.sendFile(path.join(__dirname, 'index.html'))
@@ -20,6 +24,10 @@ app.get('/contact-me', (req, res) => {
     res.sendFile(path.join(__dirname, 'contact-me.html'))
 })
 
+app.get('/{*splat}', (req, res) => {
+    res.set('Content-Type', 'text/html')
+    res.sendFile(path.join(__dirname, '404.html'))
+})
 
 app.listen(PORT, (error) => {
     // This is important!
